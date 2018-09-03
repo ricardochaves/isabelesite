@@ -1,0 +1,11 @@
+.DS_Store
+CursoHTML-aula11
+node_modules
+*.pyc
+*.log
+.noseids
+.pytest_cache
+.idea
+.data
+.coverage
+.vscode

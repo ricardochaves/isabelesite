@@ -1,0 +1,65 @@
+
+@import base
+
+$nav-height: 70px
+$nav-background-color: $primary-background-color
+$nav-background-color-holver: #eeeeee
+$nav-font-color: $primary-text-color
+$nav-font-color-holver: $secondary-text-color
+
+.my-nav
+  min-width: 600px
+  margin-top: -2
+  @media (max-width: 992px)
+    min-width: 0px
+    display: none
+
+.cursor
+  cursor: pointer
+
+.reset-padding
+  padding-top: 0px
+
+.my-collapse
+  @media (max-width: $media-4)
+    margin-top: -2px
+
+.nav-header
+  position: fixed
+  width: 100%
+  height: 38px
+  background-color: $nav-background-color
+  border-bottom: 2px solid #eeeeee
+  z-index: 999
+nav 
+  width: 100%
+  
+  .logo
+    width: 50px
+    height: 50px
+    background: $nav-background-color url(../images/logo.png)
+    background-size: cover
+    background-position: center center
+    text-indent: -10000
+
+  li 
+    border-bottom: 2px solid #eeeeee
+    min-width: 110px
+    a 
+      display: block
+      padding: 0 20px
+      line-height: $nav-height 
+      background-color: $nav-background-color
+      color: $nav-font-color
+      text-decoration: none
+      cursor: pointer
+      padding: 15px 
+      line-height: 20px
+    
+      &:hover 
+        background-color: $nav-background-color-holver
+        color: $nav-font-color-holver
+        transition: background-color .6s
+    &:hover 
+      border-bottom: 2px solid #e30000
+

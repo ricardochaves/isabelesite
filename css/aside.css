@@ -1,0 +1,7 @@
+aside {
+  position: fixed;
+  left: 0;
+  top: 50%; }
+  aside img {
+    height: 40px;
+    width: 40px; }

@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "outDir": "js",
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "module": "system",
+        "strictNullChecks": true
+    },
+    "include": [
+        "ts/**/*"
+    ]
+}
