@@ -18,6 +18,7 @@ gulp.task("ts", function () {
     return tsProject.src()
         .pipe(tsProject())
         .js.pipe(gulp.dest("js"))
+        .pipe(gulp.dest('../mainapp/static/mainapp/js'))
         .pipe(browserSync.stream());
 });
 
@@ -25,6 +26,7 @@ gulp.task('scss', function () {
     return gulp.src('scss/*.sass')
         .pipe(sass())
         .pipe(gulp.dest('css'))
+        .pipe(gulp.dest('../mainapp/static/mainapp/css'))
         .pipe(browserSync.stream())
 });
 

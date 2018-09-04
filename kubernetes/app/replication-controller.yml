@@ -1,0 +1,49 @@
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: app-base-site
+  labels:
+    name: app
+spec:
+  replicas: 3
+  selector:
+    name: app
+  template:
+    metadata:
+      labels:
+        name: app
+    spec:
+      containers:
+        - name: app
+          image: ricardobchaves6/base_site:latest
+          command: ["./base_site.sh"]
+          env:
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: MY_POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: MY_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: DB_DATA_BASE
+              value: "base_site"
+            - name: DATABASE_USER
+              value: "root"
+            - name: DB_PASSWORD
+              value: "example"
+            - name: DB_HOST
+              value: "db"
+            - name: DB_PORT
+              value: "3306"
+            - name: NORECAPTCHA_SITE_KEY
+              value: "6LcCHFYUAAAAABC8sLGPPFopPT-TEsiP71KaqeoD"
+            - name: NORECAPTCHA_SECRET_KEY
+              value: "6LcCHFYUAAAAAD1941lfU7LfyofBPnCPyCylbsgP"
+          ports:
+            - containerPort: 8000

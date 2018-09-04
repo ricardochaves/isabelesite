@@ -1,0 +1,284 @@
+footer a, .contact a {
+  color: #383636;
+  text-decoration: none; }
+
+footer a, .contact a {
+  color: #383636;
+  text-decoration: none; }
+
+.my-nav {
+  min-width: 600px;
+  margin-top: -2; }
+  @media (max-width: 992px) {
+    .my-nav {
+      min-width: 0px;
+      display: none; } }
+
+.cursor {
+  cursor: pointer; }
+
+.reset-padding {
+  padding-top: 0px; }
+
+@media (max-width: 992px) {
+  .my-collapse {
+    margin-top: -2px; } }
+
+.nav-header {
+  position: fixed;
+  width: 100%;
+  height: 38px;
+  background-color: white;
+  border-bottom: 2px solid #eeeeee;
+  z-index: 999; }
+
+nav {
+  width: 100%; }
+  nav .logo {
+    width: 50px;
+    height: 50px;
+    background: white url(../images/logo.png);
+    background-size: cover;
+    background-position: center center;
+    text-indent: -10000; }
+  nav li {
+    border-bottom: 2px solid #eeeeee;
+    min-width: 110px; }
+    nav li a {
+      display: block;
+      padding: 0 20px;
+      line-height: 70px;
+      background-color: white;
+      color: #806f66;
+      text-decoration: none;
+      cursor: pointer;
+      padding: 15px;
+      line-height: 20px; }
+      nav li a:hover {
+        background-color: #eeeeee;
+        color: #383636;
+        transition: background-color .6s; }
+    nav li:hover {
+      border-bottom: 2px solid #e30000; }
+
+footer a, .contact a {
+  color: #383636;
+  text-decoration: none; }
+
+footer {
+  margin-top: 15px;
+  border-top: 1px dotted #FF0000;
+  right: 0;
+  left: 0; }
+  footer p {
+    margin-top: 15px; }
+
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: table; }
+
+.banner1 {
+  height: 200px;
+  max-width: 2048px;
+  background-image: url("../images/couple-body-sex-boy-and-girl-art-silhouettesbreast-kiss-desktop-web.jpg");
+  background-size: cover;
+  background-position: 50% 0px;
+  background-attachment: fixed;
+  margin-top: 15px; }
+
+.banner2 {
+  height: 200px;
+  max-width: 2048px;
+  background-image: url("../images/Anatomy-Love-Seen.jpg");
+  background-size: cover;
+  background-position: 50% 0px;
+  background-attachment: fixed;
+  margin-top: 15px; }
+
+.banner3 {
+  height: 200px;
+  max-width: 2048px;
+  background-image: url("../images/sensual-web.jpg");
+  background-size: cover;
+  background-position: 50% 0px;
+  background-attachment: fixed;
+  margin-top: 15px; }
+
+footer a, .contact a {
+  color: #383636;
+  text-decoration: none; }
+
+.center-whats, .center-mobile, .center-email {
+  margin: auto;
+  padding: 10px;
+  height: 100px; }
+
+.contact p {
+  padding: 5;
+  text-align: center; }
+
+.contact > div {
+  width: 32%; }
+
+.center-whats {
+  width: 90px; }
+
+.center-mobile {
+  width: 68px;
+  fill: #806f66; }
+
+.center-email {
+  width: 110px; }
+
+.social-links {
+  padding-bottom: 30px;
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between; }
+  .social-links li {
+    display: inline-block; }
+    .social-links li a {
+      width: 43px;
+      height: 43px;
+      display: block;
+      text-indent: -99999px; }
+
+.facebook {
+  background-image: url("../images/icon/facebook-brands.svg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.twitter {
+  background-image: url("../images/icon/twitter-square-brands.svg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.linkedin {
+  background-image: url("../images/icon/linkedin-brands.svg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.instagram {
+  background-image: url("../images/icon/instagram-brands.svg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.medium {
+  background-image: url("../images/icon/medium-brands.svg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+footer a, .contact a {
+  color: #383636;
+  text-decoration: none; }
+
+.adrress li {
+  margin-top: 30px; }
+
+@media (max-width: 992px) {
+  .iframe-map {
+    margin-top: 15px; } }
+
+aside {
+  position: fixed;
+  left: 0;
+  top: 50%; }
+  aside img {
+    height: 40px;
+    width: 40px; }
+
+.services-ul img {
+  height: 10px;
+  width: 10px;
+  padding-right: 3px; }
+
+.services-ul li {
+  padding-top: 10px; }
+
+.resume {
+  margin-top: 20px; }
+  .resume h2 {
+    font-size: 2rem; }
+
+body {
+  background: white;
+  color: #383636;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.3; }
+
+.main-header {
+  height: 506px;
+  background-image: url("../images/couple-love-bedroom-kissing-web.jpg");
+  background-size: cover;
+  background-position: 50% 0px;
+  background-attachment: fixed; }
+
+.header {
+  position: relative;
+  width: 100%; }
+
+.title {
+  margin-top: 14px;
+  margin-bottom: 14px;
+  padding: 0 0 8px;
+  border-bottom: 1px dotted #FF0000;
+  font-size: 3em;
+  font-style: italic;
+  margin-top: 1em; }
+
+h2 {
+  color: #806f66; }
+
+h3 {
+  color: #383636;
+  font-size: 1.4em;
+  padding: 15px;
+  text-align: center; }
+
+.about-img {
+  height: 334px;
+  width: 334px; }
+  @media (max-width: 768px) {
+    .about-img {
+      margin-top: 15px; } }
+
+@media (max-width: 768px) {
+  .section-about iframe {
+    margin-top: 15px; } }
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap; }
+  .flex-container div {
+    padding-bottom: 40px; }
+
+.cli {
+  width: 100%;
+  text-align: right;
+  font-style: italic; }
+
+.flex-margin {
+  margin-top: 15px; }
+
+.header-content {
+  position: absolute;
+  top: 30%;
+  left: 10%; }
+  @media (max-width: 992px) {
+    .header-content {
+      top: 10%; } }
+  .header-content h1 {
+    font-size: 3.5rem;
+    color: #fff;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    font-style: italic; }
+  .header-content p {
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); }

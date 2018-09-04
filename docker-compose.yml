@@ -1,0 +1,22 @@
+version: "3.5"
+services:
+  redis:
+    image: redis:latest
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - ./mysql/init:/docker-entrypoint-initdb.d/:ro
+  isabele:
+    build: .
+    ports:
+      - "5007:5005"
+    env_file: .env
+    volumes:
+      - .:/base_site
+    depends_on:
+      - redis
+      - db
+    command: ["./wait-for-it.sh", "redis:6379", "-t", "120", "--", "./wait-for-it.sh", "db:3306", "-t", "120", "--", "./base_site.sh"]
