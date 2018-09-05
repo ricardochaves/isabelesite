@@ -131,9 +131,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
-NORECAPTCHA_SITE_KEY = os.environ["NORECAPTCHA_SITE_KEY"]
-NORECAPTCHA_SECRET_KEY = os.environ["NORECAPTCHA_SECRET_KEY"]
-
 
 THUMBNAIL_PROCESSORS = ("image_cropping.thumbnail_processors.crop_corners",) + thumbnail_settings.THUMBNAIL_PROCESSORS
 

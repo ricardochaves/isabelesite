@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.forms import modelform_factory
 
 from mainapp.models import ModelExample
-from mainapp.models import Contact
+from mainapp.models import Index
 
 from htmlmin.decorators import minified_response
 
@@ -14,6 +14,5 @@ from htmlmin.decorators import minified_response
 @cache_page(30)
 @minified_response
 def index(request):
-    examples = ModelExample.objects.filter(active=True)
-    return render(request, "mainapp/index.html", {"examples": examples})
-
+    home = Index.objects.first()
+    return render(request, "mainapp/index.html", {"home": home})

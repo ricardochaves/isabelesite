@@ -104,20 +104,17 @@
             <div class="row">
                 <header class="header">
                     <h2 id="about-title" class="title">
-                        Sobre
+                        {{home.title_about}}
                     </h2>
                 </header>
             </div>
             <div class="row">
-                <p class="col-md-6"> Faça sua vida valer a pena! Entre em contato comigo por e-mail, telefone ou whatsapp.
-                    O que for melhor para você. E conversamos mais sobre como posso te ajudar, como funciona o meu trabalho
-                    e marcamos um horário para conversarmos melhor também.
+                <p class="col-md-6"> {{home.text_about}}
 
                 </p>
                 <div class="col-md-6">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/bEVO6klt3_o?rel=0&amp;showinfo=0" frameborder="0"
-                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe class="embed-responsive-item" src="{{home.youtube_url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
 
                 </div>
@@ -232,8 +229,7 @@
             </div>
             <div class="row contact">
                 <div class="col-md-4 col-12">
-                    <a href="https://api.whatsapp.com/send?phone=5511992323959&amp;text=Acabei%20de%20ver%20o%20seu%20site%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre..."
-                        target="_blank">
+                    <a href="{{home.whatsapp_api_url}}" target="_blank">
                         <div class="center-whats">
                             <img src="{% static 'mainapp/images/icon/whatsapp-brands.svg' %}" />
                         </div>
@@ -243,13 +239,12 @@
                 <div class="col-md-4 col-12"><a href="tel:+5511977892344">
                         <div class="center-mobile"><img src="{% static 'mainapp/images/icon/mobile-alt-solid.svg' %}" />
                         </div>
-                        <p>+55 11 9 7789-2344</p></a>
+                        <p>{{home.telfone}}</p></a>
                 </div>
-                <div class="col-md-4 col-12"><a href="mailto:isabele@isabelelucchesi.com?Subject=Mais%20informações%20sobre%20o%20atendimento."
-                        target="_top">
+                <div class="col-md-4 col-12"><a href="mailto:{{home.email}}?Subject={{home.email_subject}}" target="_top">
                         <div class="center-email"><img src="{% static 'mainapp/images/icon/envelope-regular.svg' %}" />
                         </div>
-                        <p>isabele@isabelelucchesi.com</p></a>
+                        <p>{{home.email}}</p></a>
                 </div>
             </div>
             <div class="row">
@@ -271,8 +266,7 @@
     </main>
     <aside>
         <ul>
-            <li><a href="https://api.whatsapp.com/send?phone=5511992323959&amp;text=Acabei%20de%20ver%20o%20seu%20site%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre..."
-                    target="_blank">
+            <li><a href="{{home.whatsapp_api_url}}" target="_blank">
 
                     <img src="{% static 'mainapp/images/icon/whatsapp-brands.svg' %}" />
                 </a></li>
