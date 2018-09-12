@@ -1,0 +1,43 @@
+{% load static %}
+<section class="container clearfix " id="contact">
+    <div class="row">
+        <header class="header">
+            <h2 class="title">
+                {{home.title_contacts}}
+            </h2>
+        </header>
+    </div>
+    <div class="row contact">
+        <div class="col-md-4 col-12">
+            <a href="{{home.whatsapp_api_url}}" target="_blank">
+                <div class="center-whats">
+                    <img src="{% static 'mainapp/images/icon/whatsapp-brands.svg' %}" />
+                </div>
+                <p>Clique aqui </p>
+            </a>
+        </div>
+        <div class="col-md-4 col-12"><a href="tel:+5511977892344">
+                <div class="center-mobile"><img src="{% static 'mainapp/images/icon/mobile-alt-solid.svg' %}" />
+                </div>
+                <p>{{home.telfone}}</p>
+            </a>
+        </div>
+        <div class="col-md-4 col-12"><a href="mailto:{{home.email}}?Subject={{home.email_subject}}" target="_top">
+                <div class="center-email"><img src="{% static 'mainapp/images/icon/envelope-regular.svg' %}" />
+                </div>
+                <p>{{home.email}}</p>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <ul class="social-links">
+                <li><a class="facebook" href="{{home.link_facebook}}" target="_blank">Facebook</a></li>
+                <li><a class="twitter" href="{{home.link_twitter}}" target="_blank">Twitter</a></li>
+                <li><a class="linkedin" href="{{home.link_linkedin}}" target="_blank">LinkedIn</a></li>
+                <li><a class="instagram" href="{{home.link_instagram}}" target="_blank">Instagram</a></li>
+                <li><a class="medium" href="{{home.link_blog}}" target="_blank">Medium</a></li>
+            </ul>
+        </div>
+    </div>
+</section>

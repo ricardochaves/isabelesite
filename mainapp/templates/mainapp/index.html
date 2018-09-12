@@ -4,11 +4,7 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'mainapp/css/reset.css' %}">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'mainapp/css/pure.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'mainapp/css/main.css' %}">
-
+    {% include "mainapp/css.html" %}
 
     <script type="application/ld+json">
         {
@@ -58,40 +54,7 @@
 </head>
 
 <body>
-    <header class="nav-header">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light reset-padding">
-                <a class="navbar-brand cursor" data-move-to-id="header">
-                    <img src="{% static 'mainapp/images/logo.png' %}" width="30" height="30" alt="">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                    aria-label="Toggle navigation" id="nav-toggle">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse my-collapse" id="navbarNav">
-                    <ul class="navbar-nav mr-auto">
-                    </ul>
-                    <ul class="navbar-nav nav-justified my-nav" id="nav-list">
-                        <li class="nav-item ">
-                            <a class="nav-link" data-move-to-id="header">Inicio</a></li>
-                        <li class="nav-item ">
-                            <a class="nav-link" data-move-to-id="about">Sobre</a></li>
-                        <li class="nav-item ">
-                            <a class="nav-link" data-move-to-id="testimonials">Depoimentos</a></li>
-                        <li class="nav-item ">
-                            <a class="nav-link" data-move-to-id="address">Endereços</a></li>
-                        <li class="nav-item ">
-                            <a class="nav-link" data-move-to-id="contact">Contatos</a></li>
-                        <li class="nav-item ">
-                            <a class="nav-link" data-move-to-id="contact">Serviços</a></li>
-                        <li class="nav-item ">
-                            <a class="nav-link" data-move-to-id="about-title">Artigos</a></li>
-
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
+    {% include "mainapp/body-header.html" with home=home %}
     <main>
         <section id="header" class="main-header">
             <div class="header-content">
@@ -114,7 +77,8 @@
                 </p>
                 <div class="col-md-6">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="{{home.youtube_url}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe class="embed-responsive-item" src="{{home.youtube_url}}" frameborder="0" allow="autoplay; encrypted-media"
+                            allowfullscreen></iframe>
                     </div>
 
                 </div>
@@ -126,53 +90,22 @@
             <div class="row">
                 <header class="header">
                     <h2 class="title">
-                        Depoimentos
+                        {{home.title_depositions}}
                     </h2>
                 </header>
             </div>
             <div class="row">
                 <div class="flex-container">
-                    <div class="col-md-4 col-sm-6 flex-margin">
-                        <blockquote class="depo">
-                            <p>Isabele é uma profissional capaz de conduzir o processo de coaching com excelência.</p>
-                            <address class="cli">Isabele Pelissoni</address>
-                        </blockquote>
-                    </div>
 
+                    {% for d in depositions %}
                     <div class="col-md-4 col-sm-6 flex-margin">
                         <blockquote class="depo">
-                            <p>Isabele é uma profissional capaz de conduzir o processo de coaching com excelência.</p>
-                            <address class="cli">Isabele Pelissoni</address>
+                            <p>{{d.text}}</p>
+                            <address class="cli">{{d.author}}</address>
                         </blockquote>
                     </div>
+                    {% endfor %}
 
-                    <div class="col-md-4 col-sm-6 flex-margin">
-                        <blockquote class="depo">
-                            <p>Isabele é uma profissional capaz de conduzir o processo de coaching com excelência.</p>
-                            <address class="cli">Isabele Pelissoni</address>
-                        </blockquote>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 flex-margin">
-                        <blockquote class="depo">
-                            <p>Isabele é uma profissional capaz de conduzir o processo de coaching com excelência.</p>
-                            <address class="cli">Isabele Pelissoni</address>
-                        </blockquote>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 flex-margin">
-                        <blockquote class="depo">
-                            <p>Isabele é uma profissional capaz de conduzir o processo de coaching com excelência.</p>
-                            <address class="cli">Isabele Pelissoni</address>
-                        </blockquote>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6 flex-margin">
-                        <blockquote class="depo">
-                            <p>Isabele é uma profissional capaz de conduzir o processo de coaching com excelência.</p>
-                            <address class="cli">Isabele Pelissoni</address>
-                        </blockquote>
-                    </div>
                 </div>
             </div>
         </section>
@@ -182,108 +115,40 @@
             <div class="row">
                 <header class="header">
                     <h2 class="title">
-                        Endereços
+                        {{home.title_enderecos}}
                     </h2>
                 </header>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <ul class="adrress">
+
+                        {% for a in address %}
                         <li>
-                            <p>Paulista / Metrô Brigadeiro</p>
-                            <p>Rua Augusta, 1939</p>
+                            <p>{{a.title}}</p>
+                            <p>{{a.text}}</p>
                         </li>
-                        <li>
-                            <p>Paulista / Metrô Consolação</p>
-                            <p>Rua Augusta, 1939</p>
-                        </li>
-                        <li>
-                            <p>Pinheiros / Metrô Fradique Coutinho</p>
-                            <p>Rua Artur de Azevedo, 1212, conjunto 51
-                            </p>
-                        </li>
-                        <li>
-                            <p>Vila Mariana / Metrô Ana Rosa</p>
-                            <p>Rua Vergueiro, 2279</p>
-                        </li>
-                        <li>
-                            <p>Vila Madalena / Metrô Sumaré</p>
-                            <p>Rua Amália de Noronha, 151</p>
-                        </li>
+                        {% endfor %}
+
                     </ul>
                 </div>
                 <div class="col-md-8 iframe-map">
-                    <iframe src="https://www.google.com/maps/d/embed?mid=1PBARGGfXbqBOh_8T84kqYuz4qM87PJQW" width="100%" height="480"></iframe>
+                    <iframe src="{{home.link_maps}}" width="100%" height="480"></iframe>
                 </div>
             </div>
         </section>
         <section class="clearfix banner3" id="banner2">
         </section>
-        <section class="container clearfix " id="contact">
-            <div class="row">
-                <header class="header">
-                    <h2 class="title">
-                        Contatos
-                    </h2>
-                </header>
-            </div>
-            <div class="row contact">
-                <div class="col-md-4 col-12">
-                    <a href="{{home.whatsapp_api_url}}" target="_blank">
-                        <div class="center-whats">
-                            <img src="{% static 'mainapp/images/icon/whatsapp-brands.svg' %}" />
-                        </div>
-                        <p>
-                            Clique aqui </p> </a>
-                </div>
-                <div class="col-md-4 col-12"><a href="tel:+5511977892344">
-                        <div class="center-mobile"><img src="{% static 'mainapp/images/icon/mobile-alt-solid.svg' %}" />
-                        </div>
-                        <p>{{home.telfone}}</p></a>
-                </div>
-                <div class="col-md-4 col-12"><a href="mailto:{{home.email}}?Subject={{home.email_subject}}" target="_top">
-                        <div class="center-email"><img src="{% static 'mainapp/images/icon/envelope-regular.svg' %}" />
-                        </div>
-                        <p>{{home.email}}</p></a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <ul class="social-links">
-                        <li><a class="facebook" href="#" target="_blank">Facebook</a></li>
-                        <li><a class="twitter" href="#" target="_blank">Twitter</a></li>
-                        <li><a class="linkedin" href="#" target="_blank">LinkedIn</a></li>
-                        <li><a class="instagram" href="#" target="_blank">Instagram</a></li>
-                        <li><a class="medium" href="#" target="_blank">Medium</a></li>
 
-                    </ul>
-                </div>
-
-            </div>
-
-        </section>
+        {% include "mainapp/contact.html" with home=home %}
 
     </main>
-    <aside>
-        <ul>
-            <li><a href="{{home.whatsapp_api_url}}" target="_blank">
 
-                    <img src="{% static 'mainapp/images/icon/whatsapp-brands.svg' %}" />
-                </a></li>
-        </ul>
-    </aside>
-    <footer class="container">
-        <div class="row">
+    {% include "mainapp/aside.html" with home=home %}
+    {% include "mainapp/footer.html" %}
 
-            <div class="col-md-12">
-                <p>
-                    &copy; Feito por <a href="https://www.ricardobaltazar.com/">Ricardo Baltazar Chaves</a> </p>
-            </div>
-        </div>
-    </footer>
 </body>
-<script src="{% static 'mainapp/js/app.js' %}"></script>
-<script src="{% static 'mainapp/js/pure.js' %}"></script>
 
+{% include "mainapp/js.html" %}
 
 </html>

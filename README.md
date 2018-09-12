@@ -42,3 +42,47 @@ I generated these two keys just to put it in git and I removed the project, they
 ### CKEditor
 
 The project uses CKEditor using the [django-ckeditor](https://github.com/django-ckeditor/django-ckeditor) package
+
+
+
+upstream isabele_app_server {
+  server unix:/var/www/isabele/run/gunicorn.sock fail_timeout=0;
+}
+server {
+    listen 80;
+    server_name isabelelucchesi.com;
+    return 301 $scheme://www.isabelelucchesi.com$request_uri;
+}
+server {
+    listen 80;
+    server_name www.isabelelucchesi.com;
+    client_max_body_size 3m;
+    access_log /var/www/isabele/logs/nginx-access.log;
+    error_log /var/www/isabele/logs/nginx-error.log;
+location /static/ {
+        autoindex off;
+        alias /var/www/isabele/static/;
+    }
+location /media/ {
+        autoindex off;
+        alias /var/www/isabele/media/;
+    }
+location / {
+        try_files $uri @isabele_backend;
+    }
+location @isabele_backend {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_pass http://isabele_app_server;
+    }
+}
+
+
+
+scp manage.py root@104.237.5.105:/var/www/isabele/
+scp requirements.txt root@104.237.5.105:/var/www/isabele/
+scp SiteIsabele-0cf6ea54da5e.json root@104.237.5.105:/var/www/isabele/
+scp -r base_site root@104.237.5.105:/var/www/isabele/
+scp -r mainapp root@104.237.5.105:/var/www/isabele/
+

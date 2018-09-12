@@ -1,18 +1,29 @@
-from django.shortcuts import render
-from django.views.decorators.cache import cache_page
-from django.http import HttpResponseRedirect
-from django.forms import modelform_factory
 
-from mainapp.models import ModelExample
-from mainapp.models import Index
+from django.shortcuts import render
 
 from htmlmin.decorators import minified_response
+from mainapp.models import Address
+from mainapp.models import ComplexServices
+from mainapp.models import Deposition
+from mainapp.models import Index
+from mainapp.models import SimpleServices
 
-# @requires_csrf_token
 
-
-@cache_page(30)
 @minified_response
 def index(request):
     home = Index.objects.first()
-    return render(request, "mainapp/index.html", {"home": home})
+    depositions = Deposition.objects.all()
+    address = Address.objects.all()
+    return render(request, "mainapp/index.html", {"home": home, "depositions": depositions, "address": address})
+
+
+def services(request):
+    home = Index.objects.first()
+    simple_services = SimpleServices.objects.all()
+    complex_services = ComplexServices.objects.all()
+
+    return render(
+        request,
+        "mainapp/services.html",
+        {"home": home, "simple_services": simple_services, "complex_services": complex_services},
+    )
