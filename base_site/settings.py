@@ -55,9 +55,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.cache.UpdateCacheMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.cache.FetchFromCacheMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -150,5 +148,3 @@ GS_BUCKET_NAME = "isabelelucchesi.com"
 
 # https://django-storages.readthedocs.io/en/latest/backends/gcloud.html#authentication
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file("SiteIsabele-0cf6ea54da5e.json")
-
-CACHE_MIDDLEWARE_SECONDS = 30

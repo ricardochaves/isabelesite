@@ -14,7 +14,9 @@ def index(request):
     home = Index.objects.first()
     depositions = Deposition.objects.all()
     address = Address.objects.all()
-    return render(request, "mainapp/index.html", {"home": home, "depositions": depositions, "address": address})
+    response = render(request, "mainapp/index.html", {"home": home, "depositions": depositions, "address": address})
+    response["Cache-Control"] = "Cache-Control: max-age=10, stale-while-revalidate=2592000 stale-if-error=2592000"
+    return response
 
 
 def services(request):
@@ -22,8 +24,10 @@ def services(request):
     simple_services = SimpleServices.objects.all()
     complex_services = ComplexServices.objects.all()
 
-    return render(
+    response = render(
         request,
         "mainapp/services.html",
         {"home": home, "simple_services": simple_services, "complex_services": complex_services},
     )
+    response["Cache-Control"] = "Cache-Control: max-age=10, stale-while-revalidate=2592000 stale-if-error=2592000"
+    return response
