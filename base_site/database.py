@@ -11,6 +11,3 @@ DATABASES = {
         "TEST": {"NAME": "mytestdatabase"},
     }
 }
-# DATABASES = {
-#     "default": {"ENGINE": "django.db.backends.mysql", "OPTIONS": {"read_default_file": "/var/www/isabele/my.cnf"}}
-# }
