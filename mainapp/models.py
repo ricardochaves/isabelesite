@@ -1,7 +1,8 @@
 # from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 
-# from image_cropping import ImageRatioField
+from image_cropping import ImageRatioField
+from storages.backends.gcloud import GoogleCloudStorage
 
 # class ModelExample(models.Model):
 #     title = models.CharField(max_length=70, verbose_name="Title", default="", blank=True)
@@ -15,6 +16,8 @@ from django.db import models
 #     name = models.CharField(max_length=300, verbose_name="Name", blank=False, null=False)
 #     email = models.EmailField(verbose_name="E-Mail", blank=False, null=False)
 #     message = models.TextField(verbose_name="Message", blank=False, null=False)
+
+gs = GoogleCloudStorage()
 
 
 class Index(models.Model):
@@ -62,9 +65,14 @@ class Index(models.Model):
     link_linkedin = models.URLField(max_length=1000, verbose_name="Linkedin", null=True, blank=False)
     link_instagram = models.URLField(max_length=1000, verbose_name="Instagram", null=True, blank=False)
 
+    image = models.ImageField(blank=True, null=True, upload_to="about_image", verbose_name="Imagem Sobre")
+    cropping = ImageRatioField("image", "430x360", verbose_name="Crop Imagem Sobre")
+
+    test = models.ImageField(blank=True, null=True, upload_to="teste", verbose_name="teste", storage=gs)
+
     class Meta:
-        verbose_name = "Home"
-        verbose_name_plural = "Homes"
+        verbose_name = "Page"
+        verbose_name_plural = "Pages"
 
     def __str__(self):
         return self.title_about

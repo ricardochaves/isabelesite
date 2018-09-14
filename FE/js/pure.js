@@ -28,5 +28,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     initMoveTo();
     initMenu();
     initMoveBackGround();
+    verifyScrollTo();
 });
 

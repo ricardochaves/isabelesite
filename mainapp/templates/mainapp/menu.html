@@ -13,15 +13,20 @@
         </ul>
         <ul class="navbar-nav nav-justified my-nav" id="nav-list">
             <li class="nav-item ">
-                <a class="nav-link" data-move-to-id="header">Inicio</a></li>
+                <a class="nav-link" {% if menu_url %} href="{% url 'index' %}#header" {% else %}data-move-to-id="header"
+                    {%endif%}>Inicio</a></li>
             <li class="nav-item ">
-                <a class="nav-link" data-move-to-id="about">Sobre</a></li>
+                <a class="nav-link" {% if menu_url %} href="{% url 'index' %}#about" {% else %}data-move-to-id="about"
+                    {%endif%}>Sobre</a></li>
             <li class="nav-item ">
-                <a class="nav-link" data-move-to-id="testimonials">Depoimentos</a></li>
+                <a class="nav-link" {% if menu_url %} href="{% url 'index' %}#testimonials" {% else %}data-move-to-id="testimonials"
+                    {%endif%}>Depoimentos</a></li>
             <li class="nav-item ">
-                <a class="nav-link" data-move-to-id="address">Endereços</a></li>
+                <a class="nav-link" {% if menu_url %} href="{% url 'index' %}#address" {% else %}data-move-to-id="address"
+                    {%endif%}>Endereços</a></li>
             <li class="nav-item ">
-                <a class="nav-link" data-move-to-id="contact">Contatos</a></li>
+                <a class="nav-link" {% if menu_url %} href="{% url 'index' %}#contact" {% else %}data-move-to-id="contact"
+                    {%endif%}>Contatos</a></li>
             <li class="nav-item ">
                 <a class="nav-link" href="{% url 'services' %}">Serviços</a></li>
             <li class="nav-item ">

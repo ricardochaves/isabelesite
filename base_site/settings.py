@@ -122,6 +122,9 @@ STATIC_URL = "/static/"
 # STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "isabele/static")
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "/media")
+
 
 THUMBNAIL_PROCESSORS = ("image_cropping.thumbnail_processors.crop_corners",) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
@@ -142,9 +145,9 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_UPLOAD_SLUGIFY_FILENAME = True
 CKEDITOR_CONFIGS = {"default": {"toolbar": None}}
 
-DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+# DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
 GS_BUCKET_NAME = "isabelelucchesi.com"
 
 
 # https://django-storages.readthedocs.io/en/latest/backends/gcloud.html#authentication
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file("SiteIsabele-0cf6ea54da5e.json")
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file("./SiteIsabele-0cf6ea54da5e.json")

@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    {% include "mainapp/body-header.html" with home=home %}
+    {% include "mainapp/body-header.html" with home=home menu_url=menu_url %}
     <main>
         <section class="container clearfix" id="about">
             <div class="row">
@@ -22,12 +22,13 @@
                 <div class="col-md-8">
                     <ul class="services-ul">
                         {% for ss in simple_services %}
-                        <li><img src="./images/icon/check-double-solid.svg" />{{ss.text}}</li>
+                        <li><img src="{% static 'mainapp/images/icon/check-double-solid.svg' %}" />{{ss.text}}</li>
                         {% endfor %}
                     </ul>
                 </div>
 
-                <img class="about-img col-md-4" src="../images/Stocksy_txp81fb0229Wkh100_Small_574591.jpg" alt="Duas mulheres deitadas e abraçadas" />
+                <img class="about-img col-md-4" src="{% static 'mainapp/images/Stocksy_txp81fb0229Wkh100_Small_574591.jpg' %}"
+                    alt="Duas mulheres deitadas e abraçadas" />
 
             </div>
             {% for cs in complex_services %}

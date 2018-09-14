@@ -4,11 +4,7 @@ function scrollMe(element) {
     if (!elementTarget) {
         return;
     }
-    let offsetTop = elementTarget.offsetTop;
-    window.scroll({
-        top: offsetTop,
-        behavior: "smooth"
-    });
+    myMoveTo(elementTarget);
     let menu = document.getElementById("nav-list");
     if (menu) {
         menu.style.display = "";
@@ -17,5 +13,22 @@ function scrollMe(element) {
 function initMoveTo() {
     document.querySelectorAll('[data-move-to-id]').forEach(function (currentValue) {
         currentValue.addEventListener("click", function () { scrollMe(currentValue); }, false);
+    });
+}
+function verifyScrollTo() {
+    if (window.location.hash) {
+        var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+        let elementTarget = document.getElementById(hash);
+        if (!elementTarget) {
+            return;
+        }
+        myMoveTo(elementTarget);
+    }
+}
+function myMoveTo(element) {
+    let offsetTop = element.offsetTop;
+    window.scroll({
+        top: offsetTop,
+        behavior: "smooth"
     });
 }

@@ -28,4 +28,4 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     url(r"^$", views.index, name="index"),
     url(r"services/", views.services, name="services"),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

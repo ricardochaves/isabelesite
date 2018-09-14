@@ -5,12 +5,7 @@ function scrollMe(element: Element) {
     if (!elementTarget) {
         return
     }
-    let offsetTop = elementTarget.offsetTop;
-
-    window.scroll({
-        top: offsetTop,
-        behavior: "smooth"
-    });
+    myMoveTo(elementTarget);
 
     let menu = document.getElementById("nav-list");
     if (menu) {
@@ -25,4 +20,24 @@ function initMoveTo() {
     });
 }
 
+function verifyScrollTo() {
+    if (window.location.hash) {
+        var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
 
+        let elementTarget = document.getElementById(hash);
+        if (!elementTarget) {
+            return
+        }
+        myMoveTo(elementTarget);
+    }
+}
+
+function myMoveTo(element: HTMLElement) {
+
+    let offsetTop = element.offsetTop;
+
+    window.scroll({
+        top: offsetTop,
+        behavior: "smooth"
+    });
+}
