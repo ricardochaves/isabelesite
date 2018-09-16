@@ -66,9 +66,8 @@ class Index(models.Model):
     link_instagram = models.URLField(max_length=1000, verbose_name="Instagram", null=True, blank=False)
 
     image = models.ImageField(blank=True, null=True, upload_to="about_image", verbose_name="Imagem Sobre")
-    cropping = ImageRatioField("image", "430x360", verbose_name="Crop Imagem Sobre")
-
-    test = models.ImageField(blank=True, null=True, upload_to="teste", verbose_name="teste", storage=gs)
+    cropping = ImageRatioField("image", "300x450", verbose_name="Crop Imagem Sobre")
+    image_alt = models.CharField(max_length=200, verbose_name="Alt da imagem Sobre", blank=True, null=True)
 
     class Meta:
         verbose_name = "Page"

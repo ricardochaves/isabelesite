@@ -19,7 +19,7 @@
                 </header>
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <ul class="services-ul">
                         {% for ss in simple_services %}
                         <li><img src="{% static 'mainapp/images/icon/check-double-solid.svg' %}" />{{ss.text}}</li>
@@ -27,8 +27,15 @@
                     </ul>
                 </div>
 
-                <img class="about-img col-md-4" src="{% static 'mainapp/images/Stocksy_txp81fb0229Wkh100_Small_574591.jpg' %}"
-                    alt="Duas mulheres deitadas e abraçadas" />
+                <div class="col-md-6">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="{{home.youtube_url}}" frameborder="0" allow="autoplay; encrypted-media"
+                            allowfullscreen></iframe>
+                    </div>
+
+                </div>
+
+
 
             </div>
             {% for cs in complex_services %}

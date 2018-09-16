@@ -72,16 +72,11 @@
                 </header>
             </div>
             <div class="row">
-                <p class="col-md-6"> {{home.text_about}}
+                <p class="col-md-8"> {{home.text_about}}
 
                 </p>
-                <div class="col-md-6">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="{{home.youtube_url}}" frameborder="0" allow="autoplay; encrypted-media"
-                            allowfullscreen></iframe>
-                    </div>
-
-                </div>
+                <img class="about-img col-md-4" src="{% thumbnail home.image 300x450 box=home.cropping crop detail %}"
+                    alt="{{home.image_alt}}" />
             </div>
         </section>
         <section class="clearfix banner1" id="banner1">

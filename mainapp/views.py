@@ -16,12 +16,8 @@ def index(request):
     address = Address.objects.all()
 
     response = render(request, "mainapp/index.html", {"home": home, "depositions": depositions, "address": address})
-    response["Cache-Control"] = "public, max-age=4000, stale-while-revalidate=2592000, stale-if-error=2592000"
-    response["Link"] = "</css/reset.css>; as=style; rel=preload,"
-    "</css/pure.css>; as=style; rel=preload,"
-    "</css/main.css>; as=style; rel=preload,"
-    "</js/app.css>; as=style; rel=preload,"
-    "</js/pure.css>; as=style; rel=preload"
+    response["Cache-Control"] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
+    response["Link"] = "</static/mainapp/css/reset.css>; as=style; rel=preload, </static/mainapp/css/pure.css>; as=style; rel=preload, </static/mainapp/css/main.css>; as=style; rel=preload, </static/mainapp/js/app.js>; as=style; rel=preload, </static/mainapp/js/pure.js>; as=style; rel=preload"
 
     return response
 
@@ -39,10 +35,6 @@ def services(request):
         "mainapp/services.html",
         {"home": home, "simple_services": simple_services, "complex_services": complex_services, "menu_url": menu_url},
     )
-    response["Cache-Control"] = "public, max-age=4000, stale-while-revalidate=2592000, stale-if-error=2592000"
-    response["Link"] = "</css/reset.css>; as=style; rel=preload,"
-    "</css/pure.css>; as=style; rel=preload,"
-    "</css/main.css>; as=style; rel=preload,"
-    "</js/app.css>; as=style; rel=preload,"
-    "</js/pure.css>; as=style; rel=preload"
+    response["Cache-Control"] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
+    response["Link"] = "</static/mainapp/css/reset.css>; as=style; rel=preload, </static/mainapp/css/pure.css>; as=style; rel=preload, </static/mainapp/css/main.css>; as=style; rel=preload, </static/mainapp/js/app.js>; as=style; rel=preload, </static/mainapp/js/pure.js>; as=style; rel=preload"
     return response

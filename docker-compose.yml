@@ -1,15 +1,12 @@
 version: "3.5"
 services:
-  redis:
-    image: redis:latest
-    restart: always
   db:
     image: mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
-    volumes:
-      - ./mysql/init:/docker-entrypoint-initdb.d/:ro
+      MYSQL_DATABASE: base_site
+    command: --default-authentication-plugin=mysql_native_password
   isabele:
     build: .
     ports:
@@ -18,6 +15,5 @@ services:
     volumes:
       - .:/base_site
     depends_on:
-      - redis
       - db
-    command: ["./wait-for-it.sh", "redis:6379", "-t", "120", "--", "./wait-for-it.sh", "db:3306", "-t", "120", "--", "./base_site.sh"]
+    command: ["./wait-for-it.sh", "db:3306", "-t", "120", "--", "./base_site.sh"]
