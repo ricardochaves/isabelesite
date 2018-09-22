@@ -1,4 +1,4 @@
-{% load static %} {% load thumbnail %}
+{% load static_push %} {% load thumbnail %}
 
 <html>
 
@@ -22,7 +22,7 @@
                 <div class="col-md-6">
                     <ul class="services-ul">
                         {% for ss in simple_services %}
-                        <li><img src="{% static 'mainapp/images/icon/check-double-solid.svg' %}" />{{ss.text}}</li>
+                        <li><img src="{% static_push 'mainapp/images/icon/check-double-solid.svg' %}" />{{ss.text}}</li>
                         {% endfor %}
                     </ul>
                 </div>

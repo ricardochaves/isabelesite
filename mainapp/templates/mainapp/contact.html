@@ -1,4 +1,4 @@
-{% load static %}
+{% load static_push %}
 <section class="container clearfix " id="contact">
     <div class="row">
         <header class="header">
@@ -11,19 +11,19 @@
         <div class="col-md-4 col-12">
             <a href="{{home.whatsapp_api_url}}" target="_blank">
                 <div class="center-whats">
-                    <img src="{% static 'mainapp/images/icon/whatsapp-brands.svg' %}" />
+                    <img src="{% static_push 'mainapp/images/icon/whatsapp-brands.svg' %}" />
                 </div>
                 <p>Clique aqui </p>
             </a>
         </div>
         <div class="col-md-4 col-12"><a href="tel:+5511977892344">
-                <div class="center-mobile"><img src="{% static 'mainapp/images/icon/mobile-alt-solid.svg' %}" />
+                <div class="center-mobile"><img src="{% static_push 'mainapp/images/icon/mobile-alt-solid.svg' %}" />
                 </div>
                 <p>{{home.telfone}}</p>
             </a>
         </div>
         <div class="col-md-4 col-12"><a href="mailto:{{home.email}}?Subject={{home.email_subject}}" target="_top">
-                <div class="center-email"><img src="{% static 'mainapp/images/icon/envelope-regular.svg' %}" />
+                <div class="center-email"><img src="{% static_push 'mainapp/images/icon/envelope-regular.svg' %}" />
                 </div>
                 <p>{{home.email}}</p>
             </a>
