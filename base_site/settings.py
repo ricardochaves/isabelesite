@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "easy_thumbnails",
     "image_cropping",
+    "django_http2_push",
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "htmlmin.middleware.HtmlMinifyMiddleware",
     "htmlmin.middleware.MarkRequestMiddleware",
+    "django_http2_push.middleware.PushHttp2Middleware",
 ]
 
 ROOT_URLCONF = "base_site.urls"
