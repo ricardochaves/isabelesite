@@ -63,9 +63,6 @@ class Index(models.Model):
     link_facebook = models.URLField(
         max_length=1000, verbose_name="Facebook", null=True, blank=False
     )
-    link_twitter = models.URLField(
-        max_length=1000, verbose_name="Twitter", null=True, blank=False
-    )
     link_linkedin = models.URLField(
         max_length=1000, verbose_name="Linkedin", null=True, blank=False
     )

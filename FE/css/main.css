@@ -205,6 +205,9 @@ aside {
   margin-top: 20px; }
   .resume h2 {
     font-size: 2rem; }
+  .resume p {
+    text-align: justify;
+    text-justify: inter-word; }
 
 body {
   background: white;
