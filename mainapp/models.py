@@ -1,4 +1,5 @@
 # from ckeditor_uploader.fields import RichTextUploadingField
+from ckeditor.fields import RichTextField
 from django.db import models
 from image_cropping import ImageRatioField
 from storages.backends.gcloud import GoogleCloudStorage
@@ -14,7 +15,7 @@ class Index(models.Model):
         null=False,
         help_text="Sobre",
     )
-    text_about = models.TextField(verbose_name="Texto Sobre", blank=False, null=False)
+    text_about = RichTextField(verbose_name="Texto Sobre", blank=False, null=False)
 
     whatsapp_api_url = models.URLField(
         max_length=3000,

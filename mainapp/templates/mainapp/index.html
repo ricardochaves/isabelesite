@@ -72,11 +72,13 @@
                 </header>
             </div>
             <div class="row">
-                <p class="col-md-8"> {{home.text_about}}
+                <div class="col-md-8">
+                    <p> {{home.text_about|safe}}
 
-                </p>
-                <img class="about-img col-md-4" src="{% thumbnail home.image 300x450 box=home.cropping crop detail %}"
-                    alt="{{home.image_alt}}" />
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <img class="about-img" src="{% thumbnail home.image 300x450 box=home.cropping crop detail %}" alt="{{home.image_alt}}" /></div>
             </div>
         </section>
         <section class="clearfix banner1" id="banner1">
