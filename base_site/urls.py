@@ -25,7 +25,8 @@ from mainapp import views
 
 urlpatterns = [
     url(r"^ckeditor/", include("ckeditor_uploader.urls")),
-    path("admin/", admin.site.urls),
+    path("ricardo/", admin.site.urls),
     url(r"^$", views.index, name="index"),
-    url(r"services/", views.services, name="services"),
+    url(r"coaching/", views.coaching, name="coaching"),
+    url(r"psicologia/", views.psicologia, name="psicologia"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

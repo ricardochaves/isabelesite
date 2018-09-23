@@ -18,7 +18,11 @@
                     {%endif%}>Inicio</a></li>
             <li class="nav-item ">
                 <a class="nav-link" {% if menu_url %} href="{% url 'index' %}#about" {% else %}data-move-to-id="about"
-                    {%endif%}>Sobre</a></li>
+                    {%endif%}>Isabele</a></li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'coaching' %}">Coaching</a></li>
+            <li class="nav-item ">
+                <a class="nav-link" href="{% url 'psicologia' %}">Psicologia</a></li>
             <li class="nav-item ">
                 <a class="nav-link" {% if menu_url %} href="{% url 'index' %}#testimonials" {% else %}data-move-to-id="testimonials"
                     {%endif%}>Depoimentos</a></li>
@@ -28,8 +32,7 @@
             <li class="nav-item ">
                 <a class="nav-link" {% if menu_url %} href="{% url 'index' %}#contact" {% else %}data-move-to-id="contact"
                     {%endif%}>Contatos</a></li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{% url 'services' %}">Serviços</a></li>
+
             <li class="nav-item ">
                 <a class="nav-link" href="http://blog.isabelelucchesi.com/" target="_blank">Artigos</a></li>
 
