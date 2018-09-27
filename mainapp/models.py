@@ -74,7 +74,7 @@ class Index(models.Model):
     image = models.ImageField(
         blank=True, null=True, upload_to="about_image", verbose_name="Imagem Sobre"
     )
-    cropping = ImageRatioField("image", "300x450", verbose_name="Crop Imagem Sobre")
+    cropping = ImageRatioField("image", "334x334", verbose_name="Crop Imagem Sobre")
     image_alt = models.CharField(
         max_length=200, verbose_name="Alt da imagem Sobre", blank=True, null=True
     )
