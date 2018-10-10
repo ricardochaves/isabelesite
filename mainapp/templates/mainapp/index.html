@@ -1,8 +1,11 @@
-{% load static %} {% load thumbnail %}
+{% load static %} {% load thumbnail %} {% load ogp %}
 
 <html>
 
 <head>
+
+    {% show_ogp %}
+
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
     {% include "mainapp/css.html" %}
 

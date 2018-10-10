@@ -2,8 +2,8 @@
 import random
 
 from django.shortcuts import render
-from htmlmin.decorators import minified_response
 
+from htmlmin.decorators import minified_response
 from mainapp.models import Address
 from mainapp.models import Coaching
 from mainapp.models import ComplexServices
@@ -18,13 +18,13 @@ def index(request):
     home = Index.objects.first()
     depositions = Deposition.objects.all()
     final_depo = []
-    depositions = list(depositions)
 
-    for i in range(3):
-        elem = random.choice(depositions)
-        depositions.remove(elem)
-        final_depo.append(elem)
-
+    if depositions:
+        depositions = list(depositions)
+        for i in range(3):
+            elem = random.choice(depositions)
+            depositions.remove(elem)
+            final_depo.append(elem)
 
     address = Address.objects.all()
 
@@ -46,11 +46,18 @@ def psicologia(request):
     response = render(
         request,
         "mainapp/services.html",
-        {"home": home, "simple_services": simple_services, "complex_services": complex_services, "menu_url": menu_url, "service":psychology},
+        {
+            "home": home,
+            "simple_services": simple_services,
+            "complex_services": complex_services,
+            "menu_url": menu_url,
+            "service": psychology,
+        },
     )
     response["Cache-Control"] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
 
     return response
+
 
 @minified_response
 def coaching(request):
@@ -63,7 +70,13 @@ def coaching(request):
     response = render(
         request,
         "mainapp/services.html",
-        {"home": home, "simple_services": simple_services, "complex_services": complex_services, "menu_url": menu_url, "service":coaching},
+        {
+            "home": home,
+            "simple_services": simple_services,
+            "complex_services": complex_services,
+            "menu_url": menu_url,
+            "service": coaching,
+        },
     )
     response["Cache-Control"] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
 

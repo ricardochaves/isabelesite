@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "easy_thumbnails",
     "image_cropping",
     "django_http2_push",
+    "django_ogp",
 ]
 
 MIDDLEWARE = [
