@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+from base_site.database import S_ALLOWED_HOSTS
+from base_site.database import S_DATABASES
+from base_site.database import S_DEBUG
+from base_site.database import S_GS_CREDENTIALS
 from easy_thumbnails.conf import Settings as thumbnail_settings
-
-from base_site.database import DATABASES
-from google.oauth2 import service_account
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,9 +29,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "3ot&@+6-ue!i)jbx-adyr-+^a(ik)$*y^tb$(98f2$1k*=$7zi"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = S_DEBUG
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = S_ALLOWED_HOSTS
 
 
 # Application definition
@@ -90,7 +91,7 @@ WSGI_APPLICATION = "base_site.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
+DATABASES = S_DATABASES
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -152,4 +153,4 @@ GS_BUCKET_NAME = "isabelelucchesi.com"
 
 
 # https://django-storages.readthedocs.io/en/latest/backends/gcloud.html#authentication
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file("./SiteIsabele-0cf6ea54da5e.json")
+GS_CREDENTIALS = S_GS_CREDENTIALS

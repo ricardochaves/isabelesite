@@ -1,6 +1,8 @@
 import os
 
-DATABASES = {
+from google.oauth2 import service_account
+
+S_DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": os.getenv("DB_DATA_BASE"),
@@ -11,3 +13,9 @@ DATABASES = {
         "TEST": {"NAME": "mytestdatabase"},
     }
 }
+
+S_DEBUG = True
+
+S_ALLOWED_HOSTS = ["*"]
+
+S_GS_CREDENTIALS = service_account.Credentials.from_service_account_file("./SiteIsabele-0cf6ea54da5e.json")

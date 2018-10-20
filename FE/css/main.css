@@ -209,6 +209,14 @@ aside {
     text-align: justify;
     text-justify: inter-word; }
 
+.depo p {
+  text-align: justify;
+  text-justify: inter-word; }
+
+.depocard {
+  padding: 15px;
+  border: 1px solid red; }
+
 body {
   background: white;
   color: #383636;
@@ -286,7 +294,3 @@ h3 {
     color: #fff;
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
     font-style: italic; }
-
-.depo p {
-  text-align: justify;
-  text-justify: inter-word; }

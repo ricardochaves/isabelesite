@@ -1,10 +1,16 @@
-{% load static_push %} {% load thumbnail %}
+{% load static_push %} {% load thumbnail %} {% load ogp %}
 
 <html>
 
 <head>
+    {% show_ogp %}
+
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
-    {% include "mainapp/css.html" %}
+    <link rel="
+    preload" href="{% static_push 'mainapp/css/bootstrap-grid.min.css' %}" as="style" onload="this.rel='stylesheet'">
+    <link rel="
+    preload" href="{% static_push 'mainapp/css/all.css' %}" as="style" onload="this.rel='stylesheet'">
+
 </head>
 
 <body>
@@ -56,7 +62,7 @@
     {% include "mainapp/aside.html" with home=home %}
     {% include "mainapp/footer.html" %}
 </body>
-{% include "mainapp/js.html" %}
+<script src="{% static_push 'mainapp/js/all.js' %}"></script>
 
 
 </html>

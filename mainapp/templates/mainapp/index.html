@@ -1,62 +1,38 @@
-{% load static %} {% load thumbnail %} {% load ogp %}
+{% load static %} {% load thumbnail %} {% load ogp %} {% load static_push %}
 
 <html>
 
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-T7W32D7');</script>
+    <!-- End Google Tag Manager -->
 
     {% show_ogp %}
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i" rel="stylesheet">
-    {% include "mainapp/css.html" %}
 
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org",
-            "@type": "Person",
-            "url": "http://www.isabelelucchesi.com",
-            "familyName": "Lucchesi",
-            "givenName":"Isabele",
-            "jobTitle":["Psicóloga", "Sex Coach"],
-            "sameAs":["https://www.facebook.com/", "https://www.linkedin.com/"],
-            "workLocation": [
-                {
-                  "@type": "Place",
-                  "image":"https://www.isabelelucchesi.com/media/uploads/2018/03/24/consola%C3%A7%C3%A3o.jpg",
-                  "address":
-                  {
-                      "@type":"PostalAddress",
-                      "streetAddress": "Rua Augusta, 1939",
-                      "addressLocality": "São Paulo"
-                  },
-                  "geo":
-                  {
-                      "@type": "GeoCoordinates",
-                      "elevation":"820",
-                      "latitude": "40.75",
-                      "longitude": "73.98"
-                      
-                  },
-                  "hasMap":
-                  {
-                      "@type": "Map",
-                      "url":"tete"
-                  }
-              },
-              {
-                  "@type": "Place",
-                  "address":
-                  {
-                      "@type":"PostalAddress",
-                      "streetAddress": "Rua Manoel da Nóbrega, 354",
-                      "addressLocality": "São Paulo"
-                  }
-                }
-            ]
-          }
-        </script>
+    <link rel="
+    preload" href="https://fonts.googleapis.com/css?family=Roboto:400,400i" as="style" onload="this.rel='stylesheet'">
+
+    <link rel="
+    preload" href="{% static_push 'mainapp/css/bootstrap-grid.min.css' %}" as="style" onload="this.rel='stylesheet'">
+    <link rel="
+    preload" href="{% static_push 'mainapp/css/all.css' %}" as="style" onload="this.rel='stylesheet'">
+
+
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7W32D7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     {% include "mainapp/body-header.html" with home=home %}
     <main>
         <section id="header" class="main-header">
@@ -150,6 +126,6 @@
 
 </body>
 
-{% include "mainapp/js.html" %}
+<script src="{% static_push 'mainapp/js/all.js' %}"></script>
 
 </html>

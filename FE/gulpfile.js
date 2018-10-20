@@ -51,8 +51,8 @@ gulp.task('scss', function () {
 });
 
 gulp.task('watch', ['serve', 'scss', 'ts'], function () {
-    gulp.watch('scss/*.sass', ['scss']);
-    gulp.watch('ts/*.ts', ['ts']);
+    gulp.watch('scss/*.sass', ['scss']).on('change', browserSync.reload);
+    gulp.watch('ts/*.ts', ['ts']).on('change', browserSync.reload);
     gulp.watch('index.html').on('change', browserSync.reload);
 });
 
