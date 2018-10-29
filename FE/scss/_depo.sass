@@ -1,9 +1,11 @@
+@import base
+
 .depo
-  
   p
+    padding: 10px
     text-align: justify
     text-justify: inter-word
 
 .depocard
-    padding: 15px
-    border: 1px solid red 
+  &:hover
+    @extend %base-holver

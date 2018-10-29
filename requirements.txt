@@ -14,3 +14,4 @@ Pillow==5.2.0
 django_http2_push
 whitenoise[brotli]
 django_ogp
+sentry-sdk

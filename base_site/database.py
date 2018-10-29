@@ -1,6 +1,8 @@
 import os
 
+import sentry_sdk
 from google.oauth2 import service_account
+from sentry_sdk.integrations.django import DjangoIntegration
 
 S_DATABASES = {
     "default": {
@@ -19,3 +21,6 @@ S_DEBUG = True
 S_ALLOWED_HOSTS = ["*"]
 
 S_GS_CREDENTIALS = service_account.Credentials.from_service_account_file("./SiteIsabele-0cf6ea54da5e.json")
+
+
+sentry_sdk.init(dsn="https://879d08ca53344347ad6e7fc0294dde1d@sentry.io/1310444", integrations=[DjangoIntegration()])
