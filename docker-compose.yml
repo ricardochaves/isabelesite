@@ -10,7 +10,7 @@ services:
   isabele:
     build: .
     ports:
-      - "5007:5005"
+      - "5005:5005"
     env_file: .env
     volumes:
       - .:/base_site

@@ -82,7 +82,7 @@
             <img
               class="about-img"
               src="{% thumbnail home.image 334x334 box=home.cropping crop detail %}"
-              alt="{{home.image_alt}}"
+              alt="{{ home.image_alt }}"
             />
           </div>
         </div>
@@ -126,17 +126,26 @@
             </ul>
           </div>
           <div class="col-md-8 iframe-map">
-            <iframe src="{{home.link_maps}}" width="100%" height="480"></iframe>
+            <iframe
+              src="{{ home.link_maps }}"
+              width="100%"
+              height="480"
+            ></iframe>
           </div>
         </div>
       </section>
       <section class="clearfix banner3" id="banner2"></section>
 
       {% include "mainapp/contact.html" with home=home %}
+      <div>
+        {% include "mainapp/instagram.html" %}
+      </div>
     </main>
 
-    {% include "mainapp/aside.html" with home=home %} {% include
-    "mainapp/footer.html" %}
+    {% include "mainapp/aside.html" with home=home %}
+    <div>
+      {% include "mainapp/footer.html" %}
+    </div>
   </body>
 
   <script src="{% static_push 'mainapp/js/all.js' %}"></script>

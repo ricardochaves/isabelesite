@@ -1,0 +1,106 @@
+<style>
+  .landing-col {
+    padding: 0px;
+  }
+  .landing-col img {
+    width: 100%;
+  }
+  .cirle-img {
+    border-radius: 50%;
+    width: 70%;
+  }
+</style>
+
+<section class="container clearfix " id="instagram">
+  <div class="row">
+    <header class="header">
+      <h2 class="title">
+        Instagram
+      </h2>
+    </header>
+  </div>
+  <div class="row align-items-center">
+    <div id="profile" class="col-md-3" align="center"></div>
+
+    <div id="instagramfotos" class="col-md-9"></div>
+  </div>
+</section>
+
+<script>
+  function createProfile(image, name) {
+    var profile_col = document.getElementById("profile");
+
+    var eimg = document.createElement("img");
+    eimg.setAttribute("src", image);
+    eimg.setAttribute("class", "cirle-img");
+
+    var a = document.createElement("a");
+    a.setAttribute("href", "https://www.instagram.com/" + name);
+    a.setAttribute("target", "_blank");
+    a.appendChild(eimg);
+    profile_col.appendChild(a);
+  }
+  function createCol(img, link) {
+    var col = document.createElement("div");
+    col.setAttribute("class", "landing-col col");
+
+    var eimg = document.createElement("img");
+    eimg.setAttribute("src", img);
+
+    var a = document.createElement("a");
+    a.setAttribute("href", link);
+    a.setAttribute("target", "_blank");
+    a.appendChild(eimg);
+
+    col.appendChild(a);
+    return col;
+  }
+  function rowAppend(new_row, node) {
+    new_row.appendChild(
+      createCol(node.thumbnail_src, "https://instagr.am/p/" + node.shortcode)
+    );
+  }
+
+  let name = "isabelepsicologaecoach";
+  let url = "https://www.instagram.com/" + name + "/?__a=1";
+
+  let request = new XMLHttpRequest();
+  request.onreadystatechange = function() {
+    if (this.readyState === 4) {
+      if (this.status === 200) {
+        var jsonResponse = JSON.parse(this.responseText);
+
+        let posts =
+          jsonResponse.graphql.user.edge_owner_to_timeline_media.edges;
+
+        var instagram_section = document.getElementById("instagramfotos");
+
+        for (var i = 0, len = posts.length; i < len; i++) {
+          if ((i + 1) % 6 == 0) {
+            var new_row = document.createElement("div");
+            new_row.setAttribute("class", "row");
+
+            rowAppend(new_row, posts[i - 5].node);
+            rowAppend(new_row, posts[i - 4].node);
+            rowAppend(new_row, posts[i - 3].node);
+            rowAppend(new_row, posts[i - 2].node);
+            rowAppend(new_row, posts[i - 1].node);
+            rowAppend(new_row, posts[i].node);
+
+            instagram_section.appendChild(new_row);
+          }
+        }
+
+        createProfile(jsonResponse.graphql.user.profile_pic_url, name);
+      } else if (this.response == null && this.status === 0) {
+        document.body.className = "error offline";
+        console.log("The computer appears to be offline.");
+      } else {
+        document.body.className = "error";
+        console.log("Erro.");
+      }
+    }
+  };
+  request.open("GET", url, true);
+  request.send(null);
+</script>
