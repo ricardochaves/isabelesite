@@ -1,7 +1,2 @@
-ptvsd
-pylint
-autopep8
 coverage
-coveralls
-pylint_django
-black
+tox

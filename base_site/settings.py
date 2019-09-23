@@ -11,12 +11,13 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from typing import Optional
 
-from base_site.database import S_ALLOWED_HOSTS
-from base_site.database import S_DATABASES
-from base_site.database import S_DEBUG
-from base_site.database import S_GS_CREDENTIALS
+import sentry_sdk
 from easy_thumbnails.conf import Settings as thumbnail_settings
+from sentry_sdk.integrations.django import DjangoIntegration
+
+from google.oauth2 import service_account
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,18 +27,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "3ot&@+6-ue!i)jbx-adyr-+^a(ik)$*y^tb$(98f2$1k*=$7zi"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = S_DEBUG
+DEBUG: bool = os.getenv("DEBUG") == "True"
 
-ALLOWED_HOSTS = S_ALLOWED_HOSTS
-
+DJANGO_ALLOWED_HOSTS: Optional[str] = os.getenv("ALLOWED_HOSTS")
+if DJANGO_ALLOWED_HOSTS:
+    ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS.split(",")
+else:
+    ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
 INSTALLED_APPS = [
-    "mainapp",
+    "base_site.mainapp",
     "ckeditor",
     "ckeditor_uploader",
     "django.contrib.admin",
@@ -45,7 +49,6 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "whitenoise.runserver_nostatic",  # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     "django.contrib.staticfiles",
     "easy_thumbnails",
     "image_cropping",
@@ -91,13 +94,24 @@ WSGI_APPLICATION = "base_site.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-DATABASES = S_DATABASES
+DATABASES = {
+    "default": {
+        "ENGINE": os.getenv("DB_ENGINE"),
+        "NAME": os.getenv("DB_DATABASE"),
+        "USER": os.environ.get("DB_USER"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+    },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
@@ -129,19 +143,12 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "isabele/media")
 
 
-THUMBNAIL_PROCESSORS = ("image_cropping.thumbnail_processors.crop_corners",) + thumbnail_settings.THUMBNAIL_PROCESSORS
+THUMBNAIL_PROCESSORS = (
+    "image_cropping.thumbnail_processors.crop_corners",
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django_redis.cache.RedisCache",
-#         "LOCATION": "redis://redis:6379/1",
-#         "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
-#     }
-# }
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
@@ -153,4 +160,11 @@ GS_BUCKET_NAME = "isabelelucchesi.com"
 
 
 # https://django-storages.readthedocs.io/en/latest/backends/gcloud.html#authentication
-GS_CREDENTIALS = S_GS_CREDENTIALS
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    os.getenv("GS_CREDENTIALS")
+)
+
+
+sentry_sdk_dns = os.getenv("SENTRY_SDK_DNS")
+if sentry_sdk_dns:
+    sentry_sdk.init(dsn=sentry_sdk_dns, integrations=[DjangoIntegration()])

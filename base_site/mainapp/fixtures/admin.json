@@ -13,10 +13,6 @@
             "is_staff": true,
             "is_active": true,
             "date_joined": "2018-04-06T19:44:58.738Z",
-            "groups": [
-                1,
-                2
-            ],
             "user_permissions": []
         }
     }
