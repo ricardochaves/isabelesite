@@ -1,16 +1,15 @@
-
 import random
 
 from django.shortcuts import render
 
+from base_site.mainapp.models import Address
+from base_site.mainapp.models import Coaching
+from base_site.mainapp.models import ComplexServices
+from base_site.mainapp.models import Deposition
+from base_site.mainapp.models import Index
+from base_site.mainapp.models import Psychology
+from base_site.mainapp.models import SimpleServices
 from htmlmin.decorators import minified_response
-from mainapp.models import Address
-from mainapp.models import Coaching
-from mainapp.models import ComplexServices
-from mainapp.models import Deposition
-from mainapp.models import Index
-from mainapp.models import Psychology
-from mainapp.models import SimpleServices
 
 
 @minified_response
@@ -28,8 +27,14 @@ def index(request):
 
     address = Address.objects.all()
 
-    response = render(request, "mainapp/index.html", {"home": home, "depositions": final_depo, "address": address})
-    response["Cache-Control"] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
+    response = render(
+        request,
+        "mainapp/index.html",
+        {"home": home, "depositions": final_depo, "address": address},
+    )
+    response[
+        "Cache-Control"
+    ] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
 
     return response
 
@@ -54,7 +59,9 @@ def psicologia(request):
             "service": psychology,
         },
     )
-    response["Cache-Control"] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
+    response[
+        "Cache-Control"
+    ] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
 
     return response
 
@@ -78,6 +85,8 @@ def coaching(request):
             "service": coaching,
         },
     )
-    response["Cache-Control"] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
+    response[
+        "Cache-Control"
+    ] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
 
     return response

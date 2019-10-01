@@ -1,0 +1,9 @@
+[run]
+source=.
+omit =
+    .venv/*
+    .tox/*
+
+[report]
+show_missing = True
+fail_under = 85

@@ -1,19 +1,26 @@
-version: "3.5"
+version: "3.7"
 services:
   db:
-    image: mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: base_site
-    command: --default-authentication-plugin=mysql_native_password
-  isabele:
-    build: .
+    image: postgres:10.1-alpine
+  web:
+    build:
+      context: .
+      dockerfile: DockerfileTest
     ports:
-      - "5005:5005"
+      - "${PORT}:${PORT}"
     env_file: .env
     volumes:
       - .:/base_site
     depends_on:
       - db
-    command: ["./wait-for-it.sh", "db:3306", "-t", "120", "--", "./base_site.sh"]
+    command: ["./wait-for-it.sh", "${DB_HOST}:${DB_PORT}", "-t", "120", "--", "./base_site.sh"]
+
+  integration-tests:
+    image: python:3.7.4-slim
+    env_file: .env
+    volumes:
+      - .:/base_site
+    depends_on:
+      - db
+    command: >
+      sh -c "pip install tox && cd base_site && tox"

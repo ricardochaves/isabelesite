@@ -21,7 +21,7 @@ from django.contrib import admin
 from django.urls import include
 from django.urls import path
 
-from mainapp import views
+from base_site.mainapp import views
 
 urlpatterns = [
     url(r"^ckeditor/", include("ckeditor_uploader.urls")),
@@ -29,4 +29,5 @@ urlpatterns = [
     url(r"^$", views.index, name="index"),
     url(r"coaching/", views.coaching, name="coaching"),
     url(r"psicologia/", views.psicologia, name="psicologia"),
+    path("healthcheck/", include("health_check.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
