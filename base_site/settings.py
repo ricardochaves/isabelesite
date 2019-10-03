@@ -156,13 +156,13 @@ CKEDITOR_UPLOAD_SLUGIFY_FILENAME = True
 CKEDITOR_CONFIGS = {"default": {"toolbar": None}}
 
 # DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-GS_BUCKET_NAME = "isabelelucchesi.com"
+# GS_BUCKET_NAME = "isabelelucchesi.com"
 
 
 # https://django-storages.readthedocs.io/en/latest/backends/gcloud.html#authentication
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-    os.getenv("GS_CREDENTIALS")
-)
+# GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+#     os.getenv("GS_CREDENTIALS")
+# )
 
 
 sentry_sdk_dns = os.getenv("SENTRY_SDK_DNS")
