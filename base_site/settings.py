@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from logging import Formatter
 from typing import Optional
 
 import sentry_sdk
@@ -18,6 +19,7 @@ from easy_thumbnails.conf import Settings as thumbnail_settings
 from sentry_sdk.integrations.django import DjangoIntegration
 
 from google.oauth2 import service_account
+from pythonjsonlogger.jsonlogger import JsonFormatter
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -54,6 +56,10 @@ INSTALLED_APPS = [
     "image_cropping",
     "django_http2_push",
     "django_ogp",
+    "health_check",
+    "health_check.db",
+    "health_check.storage",
+    "request_id_django_log",
 ]
 
 MIDDLEWARE = [
@@ -69,6 +75,7 @@ MIDDLEWARE = [
     "htmlmin.middleware.HtmlMinifyMiddleware",
     "htmlmin.middleware.MarkRequestMiddleware",
     "django_http2_push.middleware.PushHttp2Middleware",
+    "request_id_django_log.middleware.RequestIdDjangoLog",
 ]
 
 ROOT_URLCONF = "base_site.urls"
@@ -168,3 +175,39 @@ CKEDITOR_CONFIGS = {"default": {"toolbar": None}}
 sentry_sdk_dns = os.getenv("SENTRY_SDK_DNS")
 if sentry_sdk_dns:
     sentry_sdk.init(dsn=sentry_sdk_dns, integrations=[DjangoIntegration()])
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {"request_id": {"()": "request_id_django_log.filters.RequestIDFilter"}},
+    "formatters": {
+        "standard": {
+            "()": JsonFormatter,
+            "format": "%(levelname)-8s [%(asctime)s] [%(request_id)s] %(name)s: %(message)s",
+        }
+    },
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "filters": ["request_id"],
+            "formatter": "standard",
+        }
+    },
+    "loggers": {
+        "": {"handlers": ["console"], "level": "DEBUG", "propagate": False},
+        "django.request": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "propagate": False,
+        },
+        "root": {"handlers": ["console"], "level": "DEBUG", "propagate": False},
+    },
+}
+
+REQUEST_ID_CONFIG = {
+    "REQUEST_ID_HEADER": "HTTP_X_REQUEST_ID",
+    "GENERATE_REQUEST_ID_IF_NOT_FOUND": True,
+    "RESPONSE_HEADER_REQUEST_ID": "HTTP_X_REQUEST_ID",
+}
