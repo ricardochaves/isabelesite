@@ -1,1 +1,4 @@
+-r requirements.txt
 coverage
+pytest-cov
+pytest-django
