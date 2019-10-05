@@ -23,4 +23,4 @@ services:
     depends_on:
       - db
     command: >
-      sh -c "pip install tox && cd app && tox"
+      sh -c "pip install tox && cd app && tox && find . -name '*.pyc' -delete"
