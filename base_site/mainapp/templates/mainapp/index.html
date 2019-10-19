@@ -81,7 +81,7 @@
           <div class="col-md-4">
             <img
               class="about-img"
-              src="{% thumbnail home.image 334x334 box=home.cropping crop detail %}"
+              src="{% static_push 'mainapp/images/about-me.jpg' %}"
               alt="{{ home.image_alt }}"
             />
           </div>
