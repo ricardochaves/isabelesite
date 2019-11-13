@@ -15,7 +15,7 @@ request-id-django-log==0.1.1
 django-storages==1.7.2
 google-cloud-storage==1.19.1
 
-psycopg2-binary==2.8.3
+psycopg2-binary==2.8.4
 
 gunicorn==19.9.0
 gevent==1.4.0
