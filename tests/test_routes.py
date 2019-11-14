@@ -1,14 +1,9 @@
-import uuid
-from unittest.mock import MagicMock
-
 from django.test import Client
 from django.test import TestCase
 from django.test import override_settings
 
 
-@override_settings(
-    STATICFILES_STORAGE="django.contrib.staticfiles.storage.StaticFilesStorage"
-)
+@override_settings(STATICFILES_STORAGE="django.contrib.staticfiles.storage.StaticFilesStorage")
 class TestRoutes(TestCase):
     def setUp(self):
         self.client = Client()

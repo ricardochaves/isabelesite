@@ -11,14 +11,14 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-from logging import Formatter
+# from logging import Formatter
 from typing import Optional
 
 import sentry_sdk
 from easy_thumbnails.conf import Settings as thumbnail_settings
 from sentry_sdk.integrations.django import DjangoIntegration
 
-from google.oauth2 import service_account
+# from google.oauth2 import service_account
 from pythonjsonlogger.jsonlogger import JsonFormatter
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -116,9 +116,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
@@ -150,9 +148,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "isabele/media")
 
 
-THUMBNAIL_PROCESSORS = (
-    "image_cropping.thumbnail_processors.crop_corners",
-) + thumbnail_settings.THUMBNAIL_PROCESSORS
+THUMBNAIL_PROCESSORS = ("image_cropping.thumbnail_processors.crop_corners",) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -197,11 +193,7 @@ LOGGING = {
     },
     "loggers": {
         "": {"handlers": ["console"], "level": "DEBUG", "propagate": False},
-        "django.request": {
-            "handlers": ["console"],
-            "level": "DEBUG",
-            "propagate": False,
-        },
+        "django.request": {"handlers": ["console"], "level": "DEBUG", "propagate": False},
         "root": {"handlers": ["console"], "level": "DEBUG", "propagate": False},
     },
 }

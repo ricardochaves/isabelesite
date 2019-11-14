@@ -7,6 +7,16 @@ $nav-background-color-holver: #eeeeee
 $nav-font-color: $primary-text-color
 $nav-font-color-holver: $secondary-text-color
 
+header
+  .container
+    @media (max-width: 992px)
+      padding-top: 10px
+
+button
+  .navbar-toggler
+    @media (max-width: 992px)
+      font-size: 1.75rem
+
 .my-nav
   min-width: 600px
   margin-top: -2
@@ -31,7 +41,10 @@ $nav-font-color-holver: $secondary-text-color
   background-color: $nav-background-color
   border-bottom: 2px solid #eeeeee
   z-index: 999
-nav 
+  @media (max-width: 992px)
+    height: 60px
+
+nav
   width: 100%
   
   .logo

@@ -14,27 +14,22 @@ from htmlmin.decorators import minified_response
 
 @minified_response
 def index(request):
+
     home = Index.objects.first()
     depositions = Deposition.objects.all()
     final_depo = []
 
     if depositions:
         depositions = list(depositions)
-        for i in range(3):
+        for i in range(3):  # pylint: disable=W0612
             elem = random.choice(depositions)
             depositions.remove(elem)
             final_depo.append(elem)
 
     address = Address.objects.all()
 
-    response = render(
-        request,
-        "mainapp/index.html",
-        {"home": home, "depositions": final_depo, "address": address},
-    )
-    response[
-        "Cache-Control"
-    ] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
+    response = render(request, "mainapp/index.html", {"home": home, "depositions": final_depo, "address": address})
+    response["Cache-Control"] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
 
     return response
 
@@ -59,9 +54,7 @@ def psicologia(request):
             "service": psychology,
         },
     )
-    response[
-        "Cache-Control"
-    ] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
+    response["Cache-Control"] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
 
     return response
 
@@ -71,7 +64,7 @@ def coaching(request):
     home = Index.objects.first()
     simple_services = SimpleServices.objects.filter(service=2).all()
     complex_services = ComplexServices.objects.filter(service=2).all()
-    coaching = Coaching.objects.first()
+    coachings = Coaching.objects.first()
     menu_url = True
 
     response = render(
@@ -82,11 +75,9 @@ def coaching(request):
             "simple_services": simple_services,
             "complex_services": complex_services,
             "menu_url": menu_url,
-            "service": coaching,
+            "service": coachings,
         },
     )
-    response[
-        "Cache-Control"
-    ] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
+    response["Cache-Control"] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
 
     return response
