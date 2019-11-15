@@ -1,6 +1,6 @@
 # Base Site
 
-[![Build status](https://dev.azure.com/ricardobchaves/Ricardo/_apis/build/status/isabelesite)](https://dev.azure.com/ricardobchaves/Ricardo/_build/latest?definitionId=4) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/08097ea2167948de96bb681e211ccf8f)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ricardochaves/isabelesite&amp;utm_campaign=Badge_Grade)
+[![Build status](https://ricardobchaves.visualstudio.com/Ricardo/_apis/build/status/isabelesite/isabele)](https://ricardobchaves.visualstudio.com/Ricardo/_build/latest?definitionId=8) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/08097ea2167948de96bb681e211ccf8f)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=ricardochaves/isabelesite&utm_campaign=Badge_Coverage) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/08097ea2167948de96bb681e211ccf8f)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ricardochaves/isabelesite&amp;utm_campaign=Badge_Grade)
 
 A skeleton with Django and Docker
 
