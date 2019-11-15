@@ -1,81 +1,20 @@
-# Base Site
+# Isabele
 
-[![Build status](https://dev.azure.com/ricardobchaves/Ricardo/_apis/build/status/isabelesite)](https://dev.azure.com/ricardobchaves/Ricardo/_build/latest?definitionId=4) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/08097ea2167948de96bb681e211ccf8f)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ricardochaves/isabelesite&amp;utm_campaign=Badge_Grade)
+[![Build status](https://ricardobchaves.visualstudio.com/Ricardo/_apis/build/status/isabelesite/isabele)](https://ricardobchaves.visualstudio.com/Ricardo/_build/latest?definitionId=8) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/08097ea2167948de96bb681e211ccf8f)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=ricardochaves/isabelesite&utm_campaign=Badge_Coverage) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/08097ea2167948de96bb681e211ccf8f)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ricardochaves/isabelesite&amp;utm_campaign=Badge_Grade)
 
-A skeleton with Django and Docker
+## FE
 
-## Execute
+Estou usando Gulp 4.
 
-Clone the project
+Olhar configuração no `gulp.js`
 
-```
-git clone https://github.com/ricardochaves/base_site.git
-```
+Quando rodar o comando `gult` ele vai gerar o css e o js já com `.min`. 
+Esse arquivo deve ser copiado para os estáticos do Django
 
-Go to `base_site` dir
+## Back
 
-```
-cd base_site
-```
+Rodar testes com tox.
 
-Execute the `docker-compose.yml`
+## Deploy
 
-```
-docker-compose up
-```
-
-Acess `localhost:5005`
-
-## Tips
-
-### Docker
-
-https://blog.sneawo.com/blog/2017/09/07/how-to-install-pillow-psycopg-pylibmc-packages-in-pythonalpine-image/
-
-### CKEditor
-
-The project uses CKEditor using the [django-ckeditor](https://github.com/django-ckeditor/django-ckeditor) package
-
-
-
-upstream isabele_app_server {
-  server unix:/var/www/isabele/run/gunicorn.sock fail_timeout=0;
-}
-server {
-    listen 80;
-    server_name isabelelucchesi.com;
-    return 301 $scheme://www.isabelelucchesi.com$request_uri;
-}
-server {
-    listen 80;
-    server_name www.isabelelucchesi.com;
-    client_max_body_size 3m;
-    access_log /var/www/isabele/logs/nginx-access.log;
-    error_log /var/www/isabele/logs/nginx-error.log;
-location /static/ {
-        autoindex off;
-        alias /var/www/isabele/static/;
-    }
-location /media/ {
-        autoindex off;
-        alias /var/www/isabele/media/;
-    }
-location / {
-        try_files $uri @isabele_backend;
-    }
-location @isabele_backend {
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host $http_host;
-        proxy_redirect off;
-        proxy_pass http://isabele_app_server;
-    }
-}
-
-
-
-scp manage.py root@104.237.5.105:/var/www/isabele/
-scp requirements.txt root@104.237.5.105:/var/www/isabele/
-scp SiteIsabele-0cf6ea54da5e.json root@104.237.5.105:/var/www/isabele/
-scp -r base_site root@104.237.5.105:/var/www/isabele/
-scp -r mainapp root@104.237.5.105:/var/www/isabele/
-
+Cai na master vai para produção
