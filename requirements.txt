@@ -1,4 +1,4 @@
-django==2.2.7
+django==3.0
 django_http2_push==0.0b2
 django_ogp==0.0b7
 
