@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     "django_http2_push",
     "django_ogp",
     "health_check",
-    "health_check.db",
+    #"health_check.db",
     "health_check.storage",
     "request_id_django_log",
 ]
