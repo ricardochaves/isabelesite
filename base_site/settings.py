@@ -141,11 +141,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 
-STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "isabele/static")
+STATIC_URL = "https://isabele-static.storage.googleapis.com/static/"
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "app/static")
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "isabele/media")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "app/media")
 
 
 THUMBNAIL_PROCESSORS = ("image_cropping.thumbnail_processors.crop_corners",) + thumbnail_settings.THUMBNAIL_PROCESSORS
