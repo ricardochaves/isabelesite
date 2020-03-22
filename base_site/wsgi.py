@@ -16,5 +16,5 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "base_site.settings")
 
 application = get_wsgi_application()
 
-application = WhiteNoise(application, root="/var/www/isabele/static/", max_age=31536000)
+#application = WhiteNoise(application, root="/var/www/isabele/static/", max_age=31536000)
 #application.add_files("/var/www/isabele/media/", prefix="media/")
