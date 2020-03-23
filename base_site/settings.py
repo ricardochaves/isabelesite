@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
 # from logging import Formatter
 from distutils.util import strtobool
 from typing import Optional
@@ -19,7 +18,6 @@ from typing import Tuple
 
 import sentry_sdk
 from easy_thumbnails.conf import Settings as thumbnail_settings
-
 # from google.oauth2 import service_account
 from pythonjsonlogger.jsonlogger import JsonFormatter
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -60,9 +58,8 @@ INSTALLED_APPS = [
     "django_http2_push",
     "django_ogp",
     "health_check",
-    #"health_check.db",
-    "health_check.storage",
     "request_id_django_log",
+    "csp.middleware.CSPMiddleware",
 ]
 
 MIDDLEWARE = [
