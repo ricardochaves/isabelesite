@@ -11,15 +11,18 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+
 # from logging import Formatter
+from distutils.util import strtobool
 from typing import Optional
+from typing import Tuple
 
 import sentry_sdk
 from easy_thumbnails.conf import Settings as thumbnail_settings
-from sentry_sdk.integrations.django import DjangoIntegration
 
 # from google.oauth2 import service_account
 from pythonjsonlogger.jsonlogger import JsonFormatter
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -158,16 +161,6 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_UPLOAD_SLUGIFY_FILENAME = True
 CKEDITOR_CONFIGS = {"default": {"toolbar": None}}
 
-# DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-# GS_BUCKET_NAME = "isabelelucchesi.com"
-
-
-# https://django-storages.readthedocs.io/en/latest/backends/gcloud.html#authentication
-# GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-#     os.getenv("GS_CREDENTIALS")
-# )
-
-
 sentry_sdk_dns = os.getenv("SENTRY_SDK_DNS")
 if sentry_sdk_dns:
     sentry_sdk.init(dsn=sentry_sdk_dns, integrations=[DjangoIntegration()])
@@ -203,3 +196,51 @@ REQUEST_ID_CONFIG = {
     "GENERATE_REQUEST_ID_IF_NOT_FOUND": True,
     "RESPONSE_HEADER_REQUEST_ID": "HTTP_X_REQUEST_ID",
 }
+
+
+SECURE_REFERRER_POLICY = os.getenv("SECURE_REFERRER_POLICY", "no-referrer, strict-origin-when-cross-origin")
+SECURE_HSTS_SECONDS = int(os.getenv("SECURE_HSTS_SECONDS", "3600"))
+SECURE_HSTS_INCLUDE_SUBDOMAINS = strtobool(os.getenv("SECURE_HSTS_INCLUDE_SUBDOMAINS", "t"))
+SECURE_CONTENT_TYPE_NOSNIFF = strtobool(os.getenv("SECURE_CONTENT_TYPE_NOSNIFF", "t"))
+SECURE_BROWSER_XSS_FILTER = strtobool(os.getenv("SECURE_BROWSER_XSS_FILTER", "t"))
+SECURE_SSL_REDIRECT = strtobool(os.getenv("SECURE_SSL_REDIRECT", "t"))
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_REDIRECT_EXEMPT = [
+    "healthcheck",
+]
+
+
+def tuple_or_none(env_name: str) -> Optional[Tuple]:
+    return tuple(os.getenv(env_name).split(" ")) if os.getenv(env_name) else None
+
+
+# https://django-csp.readthedocs.io/en/latest/configuration.html#configuration-chapter
+CSP_DEFAULT_SRC = tuple_or_none("CSP_DEFAULT_SRC")
+CSP_SCRIPT_SRC = tuple_or_none("CSP_SCRIPT_SRC")
+CSP_IMG_SRC = tuple_or_none("CSP_IMG_SRC")
+CSP_SCRIPT_SRC_ATTR = tuple_or_none("CSP_SCRIPT_SRC_ATTR")
+CSP_SCRIPT_SRC_ELEM = tuple_or_none("CSP_SCRIPT_SRC_ELEM")
+CSP_OBJECT_SRC = tuple_or_none("CSP_OBJECT_SRC")
+CSP_PREFETCH_SRC = tuple_or_none("CSP_PREFETCH_SRC")
+CSP_MEDIA_SRC = tuple_or_none("CSP_MEDIA_SRC")
+CSP_FRAME_SRC = tuple_or_none("CSP_FRAME_SRC")
+CSP_FONT_SRC = tuple_or_none("CSP_FONT_SRC")
+CSP_CONNECT_SRC = tuple_or_none("CSP_CONNECT_SRC")
+CSP_STYLE_SRC = tuple_or_none("CSP_STYLE_SRC")
+CSP_STYLE_SRC_ATTR = tuple_or_none("CSP_STYLE_SRC_ATTR")
+CSP_STYLE_SRC_ELEM = tuple_or_none("CSP_STYLE_SRC_ELEM")
+CSP_BASE_URI = tuple_or_none("CSP_BASE_URI")
+CSP_CHILD_SRC = tuple_or_none("CSP_CHILD_SRC")
+CSP_NAVIGATE_TO = tuple_or_none("CSP_NAVIGATE_TO")
+CSP_FORM_ACTION = tuple_or_none("CSP_FORM_ACTION")
+CSP_SANDBOX = tuple_or_none("CSP_SANDBOX")
+CSP_REPORT_URI = tuple_or_none("CSP_REPORT_URI")
+CSP_REPORT_TO = tuple_or_none("CSP_REPORT_TO")
+CSP_MANIFEST_SRC = tuple_or_none("CSP_MANIFEST_SRC")
+CSP_WORKER_SRC = tuple_or_none("CSP_WORKER_SRC")
+CSP_PLUGIN_TYPES = tuple_or_none("CSP_PLUGIN_TYPES")
+CSP_REQUIRE_SRI_FOR = tuple_or_none("CSP_REQUIRE_SRI_FOR")
+CSP_UPGRADE_INSECURE_REQUESTS = tuple_or_none("CSP_UPGRADE_INSECURE_REQUESTS")
+CSP_BLOCK_ALL_MIXED_CONTENT = tuple_or_none("CSP_BLOCK_ALL_MIXED_CONTENT")
+CSP_INCLUDE_NONCE_IN = tuple_or_none("CSP_INCLUDE_NONCE_IN")
+CSP_FRAME_ANCESTORS = tuple_or_none("CSP_FRAME_ANCESTORS")
