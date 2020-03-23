@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     "django_ogp",
     "health_check",
     "request_id_django_log",
-    "csp.middleware.CSPMiddleware",
 ]
 
 MIDDLEWARE = [
@@ -76,6 +75,7 @@ MIDDLEWARE = [
     "htmlmin.middleware.MarkRequestMiddleware",
     "django_http2_push.middleware.PushHttp2Middleware",
     "request_id_django_log.middleware.RequestIdDjangoLog",
+    "csp.middleware.CSPMiddleware",
 ]
 
 ROOT_URLCONF = "base_site.urls"
