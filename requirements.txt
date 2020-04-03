@@ -8,7 +8,7 @@ django-htmlmin==0.11.0
 django-image-cropping==1.2.0
 easy_thumbnails==2.6
 django-ckeditor==5.8.0
-Pillow==6.2.1
+Pillow==7.1.1
 
 python-json-logger==0.1.11
 request-id-django-log==0.1.1
