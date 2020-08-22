@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+
 # from logging import Formatter
 from distutils.util import strtobool
 from typing import Optional
@@ -18,6 +19,7 @@ from typing import Tuple
 
 import sentry_sdk
 from easy_thumbnails.conf import Settings as thumbnail_settings
+
 # from google.oauth2 import service_account
 from pythonjsonlogger.jsonlogger import JsonFormatter
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -241,3 +243,16 @@ CSP_UPGRADE_INSECURE_REQUESTS = tuple_or_none("CSP_UPGRADE_INSECURE_REQUESTS")
 CSP_BLOCK_ALL_MIXED_CONTENT = tuple_or_none("CSP_BLOCK_ALL_MIXED_CONTENT")
 CSP_INCLUDE_NONCE_IN = tuple_or_none("CSP_INCLUDE_NONCE_IN")
 CSP_FRAME_ANCESTORS = tuple_or_none("CSP_FRAME_ANCESTORS")
+
+
+DJANGO_CACHE_VIEW_MINUTES = os.getenv("DJANGO_CACHE_VIEW_MINUTES", 2)
+
+if DEBUG:
+    CACHES = {"default": {"BACKEND": "django.core.cache.backends.dummy.DummyCache",}}
+else:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+            "LOCATION": "/var/tmp/django_cache",
+        }
+    }

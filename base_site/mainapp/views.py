@@ -1,6 +1,8 @@
 import random
 
 from django.shortcuts import render
+from django.views.decorators.cache import cache_page
+from htmlmin.decorators import minified_response
 
 from base_site.mainapp.models import Address
 from base_site.mainapp.models import Coaching
@@ -9,9 +11,10 @@ from base_site.mainapp.models import Deposition
 from base_site.mainapp.models import Index
 from base_site.mainapp.models import Psychology
 from base_site.mainapp.models import SimpleServices
-from htmlmin.decorators import minified_response
+from base_site.settings import DJANGO_CACHE_VIEW_MINUTES
 
 
+@cache_page(60 * DJANGO_CACHE_VIEW_MINUTES)
 @minified_response
 def index(request):
 
