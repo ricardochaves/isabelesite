@@ -11,6 +11,9 @@ Olhar configuração no `gulp.js`
 Quando rodar o comando `gult` ele vai gerar o css e o js já com `.min`. 
 Esse arquivo deve ser copiado para os estáticos do Django
 
+cat index.html | critical --base test/fixture --inline > index.critical.html
+
+
 ## Back
 
 Rodar testes com tox.
