@@ -18,3 +18,7 @@ Rodar testes com tox.
 ## Deploy
 
 Cai na master vai para produção
+
+## Converter Imagens
+
+https://squoosh.app/
