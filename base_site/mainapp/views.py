@@ -32,7 +32,9 @@ def index(request):
     address = Address.objects.all()
 
     response = render(request, "mainapp/index.html", {"home": home, "depositions": final_depo, "address": address})
-    response["Cache-Control"] = "public, max-age=10, stale-while-revalidate=2592000, stale-if-error=2592000"
+    response[
+        "Cache-Control"
+    ] = f"public, max-age={DJANGO_CACHE_VIEW_MINUTES}, stale-while-revalidate=2592000, stale-if-error=2592000"
 
     return response
 
