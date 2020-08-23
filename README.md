@@ -13,6 +13,8 @@ Esse arquivo deve ser copiado para os estáticos do Django
 
 cat index.html | critical --base test/fixture --inline > index.critical.html
 
+https://web.dev/defer-non-critical-css/
+https://github.com/addyosmani/critical
 
 ## Back
 

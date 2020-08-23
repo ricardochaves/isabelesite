@@ -7,7 +7,9 @@ var gulp = require("gulp"),
     ts = require('gulp-typescript'),
     concat = require('gulp-concat'),
     cleanCSS = require('gulp-clean-css'),
-    browserSync = require("browser-sync").create();
+    browserSync = require("browser-sync").create(),
+    log = require('fancy-log'),
+    critical = require('critical').stream;
 
 var tsProject = ts.createProject('tsconfig.json');
 var uglify = require('gulp-uglify-es').default;
@@ -41,6 +43,25 @@ var paths = {
     //  dest: '...'
     // }
 };
+
+function in_line_critical_css(){
+    return gulp
+        .src('./index.html')
+        .pipe(
+          critical({
+            base: '.',
+            inline: true,
+            css: ['dist/all.css'],
+              target: {
+    html: 'index-critical.html',
+  },
+          })
+        )
+        .on('error', err => {
+          log.error(err.message);
+        })
+        .pipe(gulp.dest('dist'));
+}
 
 
 function concatCss() {
@@ -97,7 +118,8 @@ function watch() {
         // You can tell browserSync to use this directory and serve it as a mini-server
         server: {
             baseDir: "."
-        }
+        },
+        // proxy: "localhost"
         // If you are already serving your website locally using something like apache
         // You can use the proxy setting to proxy that instead
         // proxy: "yourlocal.dev"
@@ -108,7 +130,9 @@ function watch() {
     // This can be html or whatever you're using to develop your website
     // Note -- you can obviously add the path to the Paths object
     //gulp.watch("src/*.html", reload);
-    gulp.watch("*.html").on('change', browserSync.reload);
+    gulp.watch("index.html").on('change', in_line_critical_css);
+    gulp.watch("index.html").on('change', browserSync.reload);
+
 }
 
 // We don't have to expose the reload function
@@ -117,7 +141,7 @@ function watch() {
 
 // Don't forget to expose the task!
 exports.watch = watch;
-
+exports.in_line_critical_css = in_line_critical_css;
 // Expose the task by exporting it
 // This allows you to run it from the commandline using
 // $ gulp style
