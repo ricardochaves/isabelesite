@@ -22,4 +22,4 @@ gunicorn==20.0.4
 gevent==1.4.0
 WhiteNoise==4.1.4
 whitenoise[brotli]
-sentry-sdk==0.13.5
+sentry-sdk==0.17.0
