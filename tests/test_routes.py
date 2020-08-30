@@ -14,11 +14,11 @@ class TestRoutes(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    def test_should_return_200_on_coaching(self):
+    def test_should_return_301_on_coaching(self):
 
         response = self.client.get("/coaching/")
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 301)
 
     def test_should_return_200_on_psicologia(self):
 
