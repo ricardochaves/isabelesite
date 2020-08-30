@@ -89,6 +89,21 @@
         </div>
       </section>
       <section class="clearfix banner1" id="banner1"></section>
+
+          <section class="container clearfix" id="about_me_2">
+        <div class="row">
+          <header class="header">
+            <h2 class="title">{{ home.title_enderecos }}</h2>
+          </header>
+        </div>
+        <div class="row">
+<div class="col-md-12">
+            <p>{{ home.text_about_me | safe }}</p>
+          </div>
+        </div>
+      </section>
+      <section class="clearfix banner2" id="banner2"></section>
+
       <section class="container clearfix" id="testimonials">
         <div class="row">
           <header class="header">
@@ -108,34 +123,7 @@
           </div>
         </div>
       </section>
-      <section class="clearfix banner2" id="banner2"></section>
-{#      <section class="container clearfix" id="address">#}
-{#        <div class="row">#}
-{#          <header class="header">#}
-{#            <h2 class="title">{{ home.title_enderecos }}</h2>#}
-{#          </header>#}
-{#        </div>#}
-{#        <div class="row">#}
-{#          <div class="col-md-4">#}
-{#            <ul class="adrress">#}
-{#              {% for a in address %}#}
-{#              <li>#}
-{#                <p>{{ a.title }}</p>#}
-{#                <p>{{ a.text }}</p>#}
-{#              </li>#}
-{#              {% endfor %}#}
-{#            </ul>#}
-{#          </div>#}
-{#          <div class="col-md-8 iframe-map">#}
-{#            <iframe#}
-{#              src="{{ home.link_maps }}"#}
-{#              width="100%"#}
-{#              height="480"#}
-{#            ></iframe>#}
-{#          </div>#}
-{#        </div>#}
-{#      </section>#}
-{#      <section class="clearfix banner3" id="banner2"></section>#}
+      <section class="clearfix banner3" id="banner2"></section>
 
       {% include "mainapp/contact.html" with home=home %}
 {#      <div>#}
