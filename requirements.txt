@@ -3,7 +3,7 @@ django_http2_push==0.0b2
 django_ogp==0.0b7
 django-csp==3.6
 
-django-health-check==3.11.1
+django-health-check==3.14.3
 django-htmlmin==0.11.0
 django-image-cropping==1.2.0
 easy_thumbnails==2.6
