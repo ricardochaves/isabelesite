@@ -13,7 +13,7 @@ Pillow==6.2.1
 python-json-logger==0.1.11
 request-id-django-log==0.1.1
 
-django-storages==1.8
+django-storages==1.11
 google-cloud-storage==1.23.0
 
 psycopg2-binary==2.8.4
