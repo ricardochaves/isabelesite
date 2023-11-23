@@ -19,6 +19,13 @@ function addQueryString(id, queryString){
   }
 }
 
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
 // Adiciona o código ao evento DOMContentLoaded
 document.addEventListener("DOMContentLoaded", function() {
   // Obtém a query string
@@ -28,5 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
   // Adiciona a query string ao href
   addQueryString("#whats-link", href);
   addQueryString("#link_1", href);
+  setCookie("gclid", href, 1)
 
 });
