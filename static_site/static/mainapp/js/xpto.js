@@ -10,6 +10,15 @@ function getQueryString() {
   return queryString;
 }
 
+function addQueryString(id, queryString){
+  // Adiciona a query string ao href
+  const link = document.querySelector(id);
+  if (typeof link !== "undefined")
+  {
+    link.href = link +"?"+ queryString;
+  }
+}
+
 // Adiciona o código ao evento DOMContentLoaded
 document.addEventListener("DOMContentLoaded", function() {
   // Obtém a query string
@@ -17,8 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if (typeof href === "undefined") {return}
 
   // Adiciona a query string ao href
-  const link = document.querySelector("#whats-link");
-  link.href = link +"?"+ href;
-
+  addQueryString("#whats-link", href);
+  addQueryString("#link_1", href);
 
 });
